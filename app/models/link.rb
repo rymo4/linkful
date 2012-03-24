@@ -7,7 +7,8 @@ class Link
   attr_accessible :source
   
   field :source, :type => String
-  field :user_id
+  field :sender_id
+  field :reciever_id
   
   
 end

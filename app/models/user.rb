@@ -40,8 +40,7 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  has_many :links
-  
+  has_many :links, :foreign_key => :sender_id
   
   field :name
   

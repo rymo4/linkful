@@ -11,7 +11,7 @@
   - @links.each do |link|
     %tr
       %td= link.source
-      %td= link.user_id
+      %td= link_to User.find(link.sender_id).name, User.find(link.sender_id)
       %td= link_to 'Show', link
       %td= link_to 'Edit', edit_link_path(link)
       %td= link_to 'Destroy', link, :confirm => 'Are you sure?', :method => :delete

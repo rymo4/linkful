@@ -1,12 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Source:
-  = @link.source
+	%b Source:
+	= @link.source
 %p
-  %b User:
-  = @link.user_id
+	%b Sender:
+	= @link.sender_id
+%p
+	%b Reciever:
+	= @link.reciever_id
 
 = link_to 'Edit', edit_link_path(@link)
 \|
 = link_to 'Back', links_path
+	
