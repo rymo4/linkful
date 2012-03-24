@@ -1,8 +1,10 @@
 class LinksController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.where(:reciever_id => current_user.id)
+    @title = 'Shared With You'
 
     respond_to do |format|
       format.html # index.html.erb

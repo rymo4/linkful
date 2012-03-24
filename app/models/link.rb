@@ -4,7 +4,7 @@ class Link
   
   belongs_to :user
   
-  #attr_accessible :source
+  attr_accessible :source, :reciever_id
   
   field :source, :type => String
   field :sender_id
