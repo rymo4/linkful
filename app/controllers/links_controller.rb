@@ -45,6 +45,11 @@ class LinksController < ApplicationController
     user = current_user
     email = params[:email].to_s
     
+    
+    link = Mechanize.new 
+    link.get(Link.makeAbsolute(params[:link][:source]))
+    title = link.page.title 
+    
     if !User.where(:email => /#{email}/).first.nil?
       reciever_id = User.where(:email => /#{email}/i).first.id
     else
@@ -54,7 +59,7 @@ class LinksController < ApplicationController
     end
       
     
-    @link = user.links.new(params[:link].merge({:reciever_id => reciever_id}))
+    @link = user.links.new(params[:link].merge({:reciever_id => reciever_id, :title => title, :source => Link.makeAbsolute(params[:link][:source])}))
 
     respond_to do |format|
       if @link.save
