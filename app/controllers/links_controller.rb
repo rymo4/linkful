@@ -41,7 +41,18 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     user = current_user
-    @link = user.links.new(params[:link])
+    email = params[:email].to_s
+    
+    if !User.where(:email => /#{email}/).first.nil?
+      reciever_id = User.where(:email => /#{email}/i).first.id
+    else
+      User.create!(:name => "Temp User", :email => email, :password => "temppass", :password_confirmation => "temppass" )
+     
+      reciever_id = User.where(:email => /#{email}/i).first.id
+    end
+      
+    
+    @link = user.links.new(params[:link].merge({:reciever_id => reciever_id}))
 
     respond_to do |format|
       if @link.save
