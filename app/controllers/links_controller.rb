@@ -84,15 +84,13 @@ class LinksController < ApplicationController
     end
     
     link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
-    link.get(Link.makeAbsolute(URI.unescape(params[:link][:source])))
+    link.get(Link.makeAbsolute(params[:link][:source]))
     title = link.page.title 
-    puts 'testtest' + title
 
     html = link.page.content
     doc = Hpricot.parse(html)
     p = doc/ :p
     body = p.inner_html
-    puts 'body ' + body
     
     request = Typhoeus::Request.new("http://hack.parsely.com/parse",
                                     :method => :post,
@@ -168,6 +166,7 @@ class LinksController < ApplicationController
   end
 
   def bookmarklet
+    @current_userid = params[:userid]
     headers["Content-Type"] = "text/javascript"
     render :layout => false
   end
