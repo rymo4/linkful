@@ -43,8 +43,9 @@ class User
   has_many :links, :foreign_key => :sender_id
   
   field :name
+  field :isTemp, :type => Boolean, :default => false
   
-  attr_accessible :name
+  attr_accessible :name, :isTemp
   
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false

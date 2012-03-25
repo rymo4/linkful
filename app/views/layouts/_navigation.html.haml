@@ -10,7 +10,9 @@
 		%li
 			= link_to('Edit account', edit_user_registration_path)
 		%li
-			= link_to('Links', links_path)
+			= link_to('Shared With Me', links_path)
+		%li
+			= link_to('My Links', current_user)
 	- else
 		%li
 			= link_to('Sign up', new_user_registration_path)	
