@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def test
 #puts url_for(:action => 'creation', :controller => 'links', :only_path => false)
-
+puts request.fullpath
     return 
     current_user.sendDailyEmail.each do |l|
       puts l.title

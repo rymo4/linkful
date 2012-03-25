@@ -1,6 +1,6 @@
   function linkful_save()
   {
-  $.post('http://falling-robot-3804.herokuapp.com/links/create', {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '<%=@current_userid%>'}, function(data) { });
+  $.post('http://linkful.herokuapp.com/links/create', {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '<%=@current_userid%>'}, function(data) { });
   }
 $(document).ready(function() {
 function loadScript(filename, filetype){
