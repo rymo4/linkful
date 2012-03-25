@@ -9,4 +9,10 @@ class HomeController < ApplicationController
   def bookmark
     @current_userid = current_user.id.to_s
   end
+
+  def test
+    current_user.sendDailyEmail.each do |l|
+      puts l.title
+    end
+  end
 end

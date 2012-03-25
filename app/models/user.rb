@@ -50,5 +50,10 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
+  def sendDailyEmail
+    self.links.where(:created_at.gte => Date.today.day)
+  end
+
 end
 

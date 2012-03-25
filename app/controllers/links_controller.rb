@@ -17,13 +17,17 @@ class LinksController < ApplicationController
         url = link.parsely_url
         puts "URL" + url
         request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
-                                        :method => :get
+                                        :method => :get,
+                                        :timeout => 100,
+                                        :cache_timeout => 60
                                         )
         hydra = Typhoeus::Hydra.new
         hydra.queue(request)
         hydra.run
         response = request.response
-        parsed_json = ActiveSupport::JSON.decode(response.body)
+
+        unless response.body.empty?
+          parsed_json = ActiveSupport::JSON.decode(response.body)
      
         if parsed_json['status']=='DONE'
           topics = Array.new
@@ -36,6 +40,7 @@ class LinksController < ApplicationController
           end.values # HACKY CODE FTW!!!
           link.tags = topics
           link.save!
+        end
         end
       end
     end
