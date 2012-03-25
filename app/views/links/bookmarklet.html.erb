@@ -1,6 +1,6 @@
   function linkful_save()
   {
-  $.post('http://localhost:3000/links/create', {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '<%=@current_userid%>'}, function(data) { });
+  $.post(<%=url_for('/links/create', :only_path => false)%>, {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '<%=@current_userid%>'}, function(data) { });
   }
 $(document).ready(function() {
 function loadScript(filename, filetype){
