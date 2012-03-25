@@ -38,6 +38,8 @@ class LinksController < ApplicationController
                hash[item]||=item
                hash 
             end.values # HACKY CODE FTW!!!
+            
+            
             link.tags = topics
             link.save!
           end
@@ -94,7 +96,7 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
-
+    
     #user = current_user
     if params[:user].nil?
       user = current_user
@@ -117,16 +119,23 @@ class LinksController < ApplicationController
 
     html = link.page.content
     doc = Hpricot.parse(html)
-    p = doc/ :p
-    body = p.inner_html
+    
+    #body = body.gsub(/<.*>/, '')
+    (doc/"script").each {|js| js.inner_html=''}
+    text = (doc/"//*/text()")
+    body = text.join(" ")
+    body = body.gsub(/\n/, ' ')
+    body += title
+    #body = body.gsub(/<.*>/, '')
+    puts body + " END"
     
     request = Typhoeus::Request.new("http://hack.parsely.com/parse",
                                     :method => :post,
-                                        :timeout => 200,
-                                        :cache_timeout => 60,
+                                        :timeout => 600,
+                                        :cache_timeout => 600,
                                     :params => {
                                       :text => body,
-                                      :wiki_filter => true
+                                      :wiki_filter => false
                                       }
                                     )
     hydra = Typhoeus::Hydra.new
