@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   end
 
   def test
+#puts url_for(:action => 'creation', :controller => 'links', :only_path => false)
+
+    return 
     current_user.sendDailyEmail.each do |l|
       puts l.title
     end
