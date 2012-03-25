@@ -9,9 +9,14 @@
 %p
 	%b Reciever:
 	= @link.reciever_id
-%p
+%ul.span12
 	- unless @topics.empty?
-		= @topics
+		- @topics.each do |t|
+			%li.horizontal
+				<span class="label label-success">
+				=t
+				</span>
+		
 
 
 = link_to 'Edit', edit_link_path(@link)

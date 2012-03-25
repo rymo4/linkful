@@ -31,10 +31,15 @@ class LinksController < ApplicationController
     hydra.run
     response = request.response
     parsed_json = ActiveSupport::JSON.decode(response.body)
-    @topics = ""
+    @topics = Array.new
     if parsed_json['status']=='DONE' 
       marked_text = parsed_json['data'] 
-      @topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten
+      @topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
+      
+      @topics = @topics.inject({}) do |hash,item|
+         hash[item]||=item
+         hash 
+      end.values # HACKY CODE FTW!!!
     end
     
     
@@ -77,7 +82,7 @@ class LinksController < ApplicationController
     html = link.page.content
     doc = Hpricot.parse(html)
     p = doc/ :p
-    body = p.inner_html # !!!!!!!!!!!!!!!!!!!!! USE THIS FOR PARSING LATER!!!!!! ALL BODY TEXT OF A PAGE!!
+    body = p.inner_html
     
     request = Typhoeus::Request.new("http://hack.parsely.com/parse",
                                     :method => :post,
