@@ -1,0 +1,24 @@
+%h1 
+	=@title
+
+%table.table.table-bordered.table-striped
+	%tr
+		%th Source
+		- if params[:controller]=='users'
+			%th Shared To
+		- else
+			%th Shared By
+
+	- @links.each do |link|
+		%tr
+			%td
+				= link_to link.title, link.source
+				= link_to '(More)', link
+				= link_to( '(Destroy)', link, :confirm => 'Are you sure?', :method => :delete) if link.sender_id==current_user.id
+			- if params[:controller]=='users'
+				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
+			- else
+				%td= link_to User.find(link.sender_id).name, User.find(link.sender_id)
+
+%br
+

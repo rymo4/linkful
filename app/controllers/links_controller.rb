@@ -1,9 +1,15 @@
 class LinksController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
-
+    @links = Link.where(:reciever_id => current_user.id)
+    @title = 'Shared With You'
+    
+    
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }
@@ -14,7 +20,31 @@ class LinksController < ApplicationController
   # GET /links/1.json
   def show
     @link = Link.find(params[:id])
-
+    
+    url = @link.parsely_url
+    puts "URL" + url
+    request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
+                                    :method => :get
+                                    )
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    response = request.response
+    parsed_json = ActiveSupport::JSON.decode(response.body)
+    @topics = Array.new
+    if parsed_json['status']=='DONE' 
+      marked_text = parsed_json['data'] 
+      @topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
+      
+      @topics = @topics.inject({}) do |hash,item|
+         hash[item]||=item
+         hash 
+      end.values # HACKY CODE FTW!!!
+    end
+    
+    
+                       
+                                  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @link }
@@ -40,8 +70,53 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+
     user = current_user
-    @link = user.links.new(params[:link])
+    email = params[:email].to_s
+    
+    
+    link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
+    link.get(Link.makeAbsolute(params[:link][:source]))
+    title = link.page.title 
+
+    html = link.page.content
+    doc = Hpricot.parse(html)
+    p = doc/ :p
+    body = p.inner_html
+    
+    request = Typhoeus::Request.new("http://hack.parsely.com/parse",
+                                    :method => :post,
+                                    :params => {
+                                      :text => body,
+                                      :wiki_filter => true
+                                      }
+                                    )
+    hydra = Typhoeus::Hydra.new
+    hydra.queue(request)
+    hydra.run
+    response = request.response
+    parsed_json = ActiveSupport::JSON.decode(response.body)
+    
+    url = parsed_json['url']
+    if !User.where(:email => /#{email}/).first.nil?
+      reciever_id = User.where(:email => /#{email}/i).first.id
+    else
+      User.create!(
+        :name => "Temp User", 
+        :email => email, 
+        :password => "temppass", 
+        :password_confirmation => "temppass",
+        :isTemp => true )
+      reciever_id = User.where(:email => /#{email}/i).first.id
+    end
+      
+    
+    @link = user.links.new(params[:link].merge({
+      :reciever_id => reciever_id, 
+      :title => title, 
+      :source => Link.makeAbsolute(params[:link][:source]),
+      :parsely_url => url
+      }))
 
     respond_to do |format|
       if @link.save
