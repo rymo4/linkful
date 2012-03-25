@@ -26,7 +26,7 @@ class LinksController < ApplicationController
         hydra.run
         response = request.response
 
-        unless response.body.timed_out?
+        unless response.timed_out?
           parsed_json = ActiveSupport::JSON.decode(response.body)
      
         if parsed_json['status']=='DONE'

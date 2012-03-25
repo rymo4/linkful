@@ -6,11 +6,12 @@
 %h1 
 	People I Have Sent Links To:
 %br
-%table.table.table-bordered.table-striped.span4
-	- @priority_friends.each do |f|
-		%tr
-			%td
-				= link_to User.find(f).name, User.find(f)
+%div.span5
+	%table.table.table-bordered.table-stripe
+		- @priority_friends.each do |f|
+			%tr
+				%td
+					= link_to User.find(f).name, User.find(f)
 				
 
 		
