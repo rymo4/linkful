@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       end
 	  end
 	  
-	  @friends = Hash[@friends.sort]
+	  #@friends = Hash[@friends.sort]
 	  @priority_friends = @friends.keys
     
     
