@@ -14,7 +14,7 @@ class Link
   private
   
   def self.makeAbsolute(link)
-    if link !~ /http:\/\//
+    if link !~ /http(s)?:\/\//
       'http://' + link
     else
       link

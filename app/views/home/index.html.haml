@@ -1,3 +1,7 @@
 %h3 Home
 - @users.each do |user|
-  %p User: #{link_to user.name, user}
+	%p User: #{link_to user.name, user}
+
+%button.btn-primary.btn.btn-large
+	= link_to 'New Link', new_link_path
+
