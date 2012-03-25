@@ -1,8 +1,19 @@
-%h3 Home
-- @users.each do |user|
-	%p User: #{link_to user.name, user}
-
-
-= link_to 'New Link', new_link_path, :class=>"btn-primary btn btn-large"
+- if user_signed_in?
+	%h3 Home
 	
+	%div.hero-unit
+		%div.row
+			%div.span2
+				= link_to 'New Link', new_link_path, :class=>"btn-primary btn btn-large"
+			%div.span4
+				%h2 Post a Link to your friends
+	
+- else
+	%div.hero-unit
+		%h1 Welcome to Linkful
+		%p Linkful is the best way to share and receive links from your friends
+	%div
+		%p This is a nice description of how Linkful works
 
+
+	
