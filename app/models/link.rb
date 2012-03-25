@@ -4,12 +4,13 @@ class Link
   
   belongs_to :user
   
-  attr_accessible :source, :reciever_id, :title
+  attr_accessible :source, :reciever_id, :title, :parsely_url
   
   field :source, :type => String
   field :sender_id
   field :reciever_id
   field :title, :type => String
+  field :parsely_url, :type => String
   
   private
   

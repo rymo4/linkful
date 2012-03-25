@@ -19,3 +19,4 @@ gem "devise", ">= 2.1.0.rc"
 gem "bootstrap-sass", ">= 2.0.1"
 gem 'mechanize'
 gem 'hpricot'
+gem 'typhoeus'
