@@ -1,25 +1,21 @@
 %p#notice= notice
 
+%h1
+	= User.find(@link.sender_id).name
+	posted this link for
+	= User.find(@link.reciever_id).name
+
 %p
-	%b Source:
-	= @link.source
-%p
-	%b Sender:
-	= @link.sender_id
-%p
-	%b Reciever:
-	= @link.reciever_id
+	%b View:
+	= link_to @link.title, @link.source
+
 %ul
-	- unless @topics.empty?
+	- unless @topics.nil?
 		- @topics.each do |t|
 			%li.horizontal
 				<span class="label label-success">
 				=t
 				</span>
-		
-
-
-= link_to 'Edit', edit_link_path(@link)
-\|
-= link_to 'Back', links_path
 	
+= link_to( 'Delete This Link', @link, :confirm => 'Are you sure?', :method => :delete) if @link.sender_id==current_user.id
+
