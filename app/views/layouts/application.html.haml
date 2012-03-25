@@ -21,9 +21,5 @@
         .content
           .row
             .span12
-              - flash.each do |name, msg|
-                %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-                  %a.close{"data-dismiss" => "alert"} ×
-                  = msg
               = yield
           %footer
