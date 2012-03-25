@@ -90,10 +90,15 @@ class LinksController < ApplicationController
   def create
 
     #user = current_user
-    user = User.find(params[:user])
+    if params[:user].nil?
+      user = current_user
+    else
+      user = User.find(params[:user])
+    end
+      
     email = params[:email].to_s
 
-    if not params[:source].empty?
+    unless params[:source].nil? || params[:source].empty?
         params[:link] = Hash.new
 
       params[:link][:source] = Hash.new
