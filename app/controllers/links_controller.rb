@@ -121,6 +121,8 @@ class LinksController < ApplicationController
     
     request = Typhoeus::Request.new("http://hack.parsely.com/parse",
                                     :method => :post,
+                                        :timeout => 100,
+                                        :cache_timeout => 60,
                                     :params => {
                                       :text => body,
                                       :wiki_filter => true
