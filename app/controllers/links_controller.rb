@@ -76,9 +76,8 @@ class LinksController < ApplicationController
     user = User.find(params[:user])
     email = params[:email].to_s
     
-    
     link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
-    link.get(Link.makeAbsolute(params[:link][:source]))
+    link.get(Link.makeAbsolute(URI.unescape(params[:source])))
     title = link.page.title 
 
     html = link.page.content
