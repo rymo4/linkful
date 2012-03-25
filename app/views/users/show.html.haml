@@ -1,8 +1,4 @@
-%p
-	User: #{@user.name}
-%p
-	Email: #{@user.email if @user.email}
-
+%br
 = render 'shared/links'
 
 %h1 
@@ -14,5 +10,8 @@
 			%td
 				= link_to User.find(f).name, User.find(f)
 		
+%div.span12
+	%h3
+		Contact me at #{@user.email if @user.email}
 		
 	

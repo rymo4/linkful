@@ -10,6 +10,41 @@ class LinksController < ApplicationController
     
     
     
+    
+    @links.each do |link|
+      if link.tags.empty?
+        url = link.parsely_url
+        puts "URL" + url
+        request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
+                                        :method => :get
+                                        )
+        hydra = Typhoeus::Hydra.new
+        hydra.queue(request)
+        hydra.run
+        response = request.response
+        parsed_json = ActiveSupport::JSON.decode(response.body)
+     
+        if parsed_json['status']=='DONE'
+          topics = Array.new
+          marked_text = parsed_json['data'] 
+          topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
+
+          topics = topics.inject({}) do |hash,item|
+             hash[item]||=item
+             hash 
+          end.values # HACKY CODE FTW!!!
+          link.tags = topics
+          link.save!
+        end
+      end
+    end
+    
+    
+    
+    
+    
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }
@@ -20,27 +55,9 @@ class LinksController < ApplicationController
   # GET /links/1.json
   def show
     @link = Link.find(params[:id])
+    @topics = @link.tags
     
-    url = @link.parsely_url
-    puts "URL" + url
-    request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
-                                    :method => :get
-                                    )
-    hydra = Typhoeus::Hydra.new
-    hydra.queue(request)
-    hydra.run
-    response = request.response
-    parsed_json = ActiveSupport::JSON.decode(response.body)
-    @topics = Array.new
-    if parsed_json['status']=='DONE' 
-      marked_text = parsed_json['data'] 
-      @topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
-      
-      @topics = @topics.inject({}) do |hash,item|
-         hash[item]||=item
-         hash 
-      end.values # HACKY CODE FTW!!!
-    end
+ 
     
     
                        
@@ -106,7 +123,8 @@ class LinksController < ApplicationController
         :email => email, 
         :password => "temppass", 
         :password_confirmation => "temppass",
-        :isTemp => true )
+        :isTemp => true 
+        )
       reciever_id = User.where(:email => /#{email}/i).first.id
     end
       

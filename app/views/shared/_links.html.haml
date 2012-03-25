@@ -1,11 +1,11 @@
 %h1 
 	=@title
-
+%br
 %table.table.table-bordered.table-striped
 	%tr
 		%th Source
 		- if params[:controller]=='users'
-			%th Shared To
+			%th Sent By
 		- else
 			%th Shared By
 
@@ -14,7 +14,14 @@
 			%td
 				= link_to link.title, link.source
 				= link_to '(More)', link
-				= link_to( '(Destroy)', link, :confirm => 'Are you sure?', :method => :delete) if link.sender_id==current_user.id
+				- unless link.tags.nil?
+					%ul
+						- link.tags.take(10).each do |t|
+							%li.horizontal
+								<span class="label label-success">
+								=t
+								</span>
+				
 			- if params[:controller]=='users'
 				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
 			- else
