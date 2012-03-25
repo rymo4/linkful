@@ -12,8 +12,7 @@
 	- @links.each do |link|
 		%tr
 			%td
-				= link_to link.title, link.source
-				= link_to '(More)', link
+				= link_to link.title, link.source, :target => "_blank"
 				- unless link.tags.nil?
 					%ul
 						- link.tags.take(10).each do |t|

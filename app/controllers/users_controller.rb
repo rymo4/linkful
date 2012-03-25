@@ -12,27 +12,29 @@ class UsersController < ApplicationController
     @links.each do |link|
       if link.tags.nil?
         url = link.parsely_url
-        puts "URL" + url
-        request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
-                                        :method => :get
-                                        )
-        hydra = Typhoeus::Hydra.new
-        hydra.queue(request)
-        hydra.run
-        response = request.response
-        parsed_json = ActiveSupport::JSON.decode(response.body)
+        unless url.nil? || url.empty?
+          puts "URL" + url
+          request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
+                                          :method => :get
+                                          )
+          hydra = Typhoeus::Hydra.new
+          hydra.queue(request)
+          hydra.run
+          response = request.response
+          parsed_json = ActiveSupport::JSON.decode(response.body)
      
-        if parsed_json['status']=='DONE'
-          topics = Array.new
-          marked_text = parsed_json['data'] 
-          topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
+          if parsed_json['status']=='DONE'
+            topics = Array.new
+            marked_text = parsed_json['data'] 
+            topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
 
-          topics = topics.inject({}) do |hash,item|
-             hash[item]||=item
-             hash 
-          end.values # HACKY CODE FTW!!!
-          link.tags = topics
-          link.save!
+            topics = topics.inject({}) do |hash,item|
+               hash[item]||=item
+               hash 
+            end.values # HACKY CODE FTW!!!
+            link.tags = topics
+            link.save!
+          end
         end
       end
     end
