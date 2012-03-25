@@ -13,7 +13,7 @@ class LinksController < ApplicationController
     
     
     @links.each do |link|
-      if link.tags.empty?
+      if ((!link.tags.nil?) && (!link.tags.empty?))
         url = link.parsely_url
         puts "URL" + url
         request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
@@ -26,7 +26,7 @@ class LinksController < ApplicationController
         hydra.run
         response = request.response
 
-        unless response.body.empty?
+        unless response.body.timed_out?
           parsed_json = ActiveSupport::JSON.decode(response.body)
      
         if parsed_json['status']=='DONE'
@@ -132,9 +132,13 @@ class LinksController < ApplicationController
     hydra.queue(request)
     hydra.run
     response = request.response
+
+    unless request.response.timed_out?
     parsed_json = ActiveSupport::JSON.decode(response.body)
     
     url = parsed_json['url']
+    end
+
     if !User.where(:email => /#{email}/).first.nil?
       reciever_id = User.where(:email => /#{email}/i).first.id
     else
