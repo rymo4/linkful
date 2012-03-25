@@ -1,0 +1,37 @@
+$(document).ready(function() {
+function loadScript(filename, filetype){
+   if (filetype=="js"){ //if filename is a external JavaScript file
+       var fileref=document.createElement('script')
+    fileref.setAttribute("type","text/javascript")
+    fileref.setAttribute("src", filename)
+   }
+    else if (filetype=="css"){ //if filename is an external CSS file
+        var fileref=document.createElement("link")
+    fileref.setAttribute("rel", "stylesheet")
+    fileref.setAttribute("type", "text/css")
+    fileref.setAttribute("href", filename)
+   }
+ if (typeof fileref!="undefined")
+    document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+
+  function linkful_save()
+  {
+  $.post('http://localhost:3000/links/create', {link[source]: 'http://appetude.com', link[sender_id]: 
+
+  }
+
+	$("#linkfulModal").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+  $.fancybox( {href : 'http://google.com', title : 'Lorem lipsum', type: 'html', content: '<form><input type="text" id="lightful_email" /><button onclick="linkful_save();"></form>'} );
+  loadScript('http://fancyapps.com/fancybox/source/jquery.fancybox.css', 'css');
+});

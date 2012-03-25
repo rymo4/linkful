@@ -1,6 +1,8 @@
 Linkful::Application.routes.draw do
   resources :links
 
+  match 'bookmarklet' => 'links#bookmarklet'
+
   authenticated :user do
     root :to => 'home#index'
   end

@@ -156,4 +156,9 @@ class LinksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def bookmarklet
+    headers["Content-Type"] = "text/javascript"
+    render :layout => false
+  end
 end
