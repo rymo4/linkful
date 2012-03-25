@@ -43,7 +43,6 @@ class UsersController < ApplicationController
     
     
     
-    
     @title = @user.name + '\'s Links'
 
   	
