@@ -16,6 +16,8 @@ class Link
   private
   
   def self.makeAbsolute(link)
+    link = URI.unescape(link)
+    puts 'linkage ' + link
     if link !~ /http(s)?:\/\//
       'http://' + link
     else

@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  skip_before_filter :verify_authenticity_token
+  before_filter :authenticate_user!, :except => [:show, :index, :create]
 
   # GET /links
   # GET /links.json
@@ -88,18 +89,27 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
 
-    user = current_user
+    #user = current_user
+    user = User.find(params[:user])
     email = params[:email].to_s
-    
+
+    if not params[:source].empty?
+        params[:link] = Hash.new
+
+      params[:link][:source] = Hash.new
+      params[:link][:source] = params[:source]
+    end
     
     link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
-    link.get(Link.makeAbsolute(params[:link][:source]))
+    link.get(Link.makeAbsolute(URI.unescape(params[:link][:source])))
     title = link.page.title 
+    puts 'testtest' + title
 
     html = link.page.content
     doc = Hpricot.parse(html)
     p = doc/ :p
     body = p.inner_html
+    puts 'body ' + body
     
     request = Typhoeus::Request.new("http://hack.parsely.com/parse",
                                     :method => :post,
