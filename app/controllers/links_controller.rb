@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  skip_before_filter :verify_authenticity_token
+  before_filter :authenticate_user!, :except => [:show, :index, :create]
 
   # GET /links
   # GET /links.json
@@ -71,7 +72,8 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
 
-    user = current_user
+    #user = current_user
+    user = User.find(params[:user])
     email = params[:email].to_s
     
     

@@ -1,8 +1,3 @@
-  function linkful_save()
-  {
-alert(encodeURIComponent(d.location.href));
-  $.post('http://localhost:3000/links/create', {'link[source]': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '4f6ec5881a4c1e6424000004'}, function(data) { });
-  }
 $(document).ready(function() {
 function loadScript(filename, filetype){
    if (filetype=="js"){ //if filename is a external JavaScript file
@@ -19,8 +14,6 @@ function loadScript(filename, filetype){
  if (typeof fileref!="undefined")
     document.getElementsByTagName("head")[0].appendChild(fileref)
 }
-
-
 	$("#linkfulModal").fancybox({
 		maxWidth	: 800,
 		maxHeight	: 600,
@@ -32,6 +25,6 @@ function loadScript(filename, filetype){
 		openEffect	: 'none',
 		closeEffect	: 'none'
 	});
-  $.fancybox( {href : 'http://google.com', title : 'Lorem lipsum', type: 'html', content: '<form><input type="text" id="lightful_email" /><button onclick="linkful_save();">Send</button></form>'} );
+	$.fancybox( {href : 'http://google.com', title : 'Lorem lipsum', type: 'iframe'} );
   loadScript('http://fancyapps.com/fancybox/source/jquery.fancybox.css', 'css');
 });

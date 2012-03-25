@@ -1,6 +1,8 @@
 Linkful::Application.routes.draw do
   resources :links
 
+  match '/links/create' => 'links#create'
+
   match 'bookmarklet' => 'links#bookmarklet'
 
   authenticated :user do
