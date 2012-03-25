@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /links
   # GET /links.json
   def index
@@ -42,6 +43,7 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+
     user = current_user
     email = params[:email].to_s
     
@@ -49,6 +51,11 @@ class LinksController < ApplicationController
     link = Mechanize.new 
     link.get(Link.makeAbsolute(params[:link][:source]))
     title = link.page.title 
+
+    html = link.page.content
+    doc = Hpricot.parse(html)
+    p = doc/ :p
+    body = p.inner_html # !!!!!!!!!!!!!!!!!!!!! USE THIS FOR PARSING LATER!!!!!! ALL BODY TEXT OF A PAGE!!
     
     if !User.where(:email => /#{email}/).first.nil?
       reciever_id = User.where(:email => /#{email}/i).first.id
@@ -59,7 +66,6 @@ class LinksController < ApplicationController
         :password => "temppass", 
         :password_confirmation => "temppass",
         :isTemp => true )
-     
       reciever_id = User.where(:email => /#{email}/i).first.id
     end
       

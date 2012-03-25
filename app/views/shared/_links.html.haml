@@ -13,7 +13,7 @@
 		%tr
 			%td
 				= link_to link.title, link.source
-				= link_to( 'Destroy', link, :confirm => 'Are you sure?', :method => :delete) if link.sender_id==current_user.id
+				= link_to( '(Destroy)', link, :confirm => 'Are you sure?', :method => :delete) if link.sender_id==current_user.id
 			- if params[:controller]=='users'
 				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
 			- else

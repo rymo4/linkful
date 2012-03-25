@@ -69,6 +69,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     hike (1.2.1)
+    hpricot (0.8.6)
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.1)
@@ -179,6 +180,7 @@ DEPENDENCIES
   factory_girl_rails (>= 2.0.0.rc)
   haml (>= 3.1.4)
   haml-rails (>= 0.3.4)
+  hpricot
   jquery-rails
   mechanize
   mongoid (>= 2.4.6)
