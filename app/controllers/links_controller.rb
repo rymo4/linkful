@@ -112,11 +112,13 @@ class LinksController < ApplicationController
       params[:link][:source] = Hash.new
       params[:link][:source] = params[:source]
     end
+
     
     link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
     link.get(Link.makeAbsolute(params[:link][:source]))
     title = link.page.title 
 
+=begin
     html = link.page.content
     doc = Hpricot.parse(html)
     
@@ -147,6 +149,9 @@ class LinksController < ApplicationController
       parsed_json = ActiveSupport::JSON.decode(response.body)
       url = parsed_json['url']
     end
+=end
+
+    url = nil
 
     if !User.where(:email => /#{email}/).first.nil?
       reciever_id = User.where(:email => /#{email}/i).first.id
