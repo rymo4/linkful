@@ -15,7 +15,7 @@ class LinksController < ApplicationController
     @links.each do |link|
       #if ((!link.tags.nil?) && (!link.tags.empty?))
         url = link.parsely_url
-        unless url.nil?
+        unless url.nil? || !link.tags.nil?
           request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
                                           :method => :get,
                                           :timeout => 250,

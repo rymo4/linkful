@@ -13,13 +13,13 @@
 		%tr
 			%td
 				= link_to link.title, link.source, :target => "_blank"
+				= link_to '(View)', link if current_user.id == link.sender_id
 				- unless link.tags.nil?
 					%ul
 						- link.tags.take(10).each do |t|
 							%li.horizontal
-								<span class="label label-success">
-								=t
-								</span>
+								%span.label.label-success 
+									= t
 				
 			- if params[:controller]=='users'
 				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)

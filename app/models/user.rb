@@ -41,16 +41,16 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
   has_many :links, :foreign_key => :sender_id
-  
+  # Custom fields
   field :name
   field :isTemp, :type => Boolean, :default => false
   
   attr_accessible :name, :isTemp
-  
+  # Validations
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-
+  # Methods
   def sendDailyEmail
     self.links.where(:created_at.gte => Date.today.day)
   end

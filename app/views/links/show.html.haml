@@ -13,9 +13,8 @@
 	- unless @topics.nil?
 		- @topics.each do |t|
 			%li.horizontal
-				<span class="label label-success">
-				=t
-				</span>
-	
+				%span.label.label-success 
+					= t
+					
 = link_to( 'Delete This Link', @link, :confirm => 'Are you sure?', :method => :delete) if @link.sender_id==current_user.id
 
