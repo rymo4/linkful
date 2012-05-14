@@ -44,6 +44,7 @@ class User
   # Custom fields
   field :name
   field :isTemp, :type => Boolean, :default => false
+  field :lastSent, :type => DateTime, :default => Date.today
   
   attr_accessible :name, :isTemp
   # Validations
@@ -52,7 +53,7 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   # Methods
   def sendDailyEmail
-    self.links.where(:created_at.gte => Date.today.day)
+    puts self.links.where(:created_at.lte => Date.today.day).execute.to_a.inspect
   end
 
 end

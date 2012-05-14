@@ -12,6 +12,8 @@ class Link
   field :title, :type => String
   field :parsely_url, :type => String
   field :tags, :type => Array
+
+  after_save :addotoQueue
   
   private
   
@@ -24,5 +26,9 @@ class Link
       link
     end
   end
-  
+
+  protected
+  def addtoQueue()
+  end
+
 end
