@@ -11,6 +11,5 @@ class HomeController < ApplicationController
   end
 
   def test
-    current_user.sendDailyEmail
   end
 end

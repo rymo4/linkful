@@ -13,10 +13,9 @@ class Link
   field :parsely_url, :type => String
   field :tags, :type => Array
 
-  after_save :addotoQueue
+  after_save :add_to_queue
   
   private
-  
   def self.makeAbsolute(link)
     link = URI.unescape(link)
     puts 'linkage ' + link
@@ -27,8 +26,8 @@ class Link
     end
   end
 
-  protected
-  def addtoQueue()
+  def add_to_queue()
+
   end
 
 end
