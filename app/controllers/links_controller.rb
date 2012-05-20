@@ -8,10 +8,7 @@ class LinksController < ApplicationController
     @links = Link.where(:reciever_id => current_user.id)
     @title = 'Shared With You'
     
-    
-    
-    
-    
+=begin
     @links.each do |link|
       #if ((!link.tags.nil?) && (!link.tags.empty?))
         url = link.parsely_url
@@ -47,11 +44,7 @@ class LinksController < ApplicationController
         end
       end
     end
-    
-    
-    
-    
-    
+=end
     
     
     respond_to do |format|
@@ -173,8 +166,6 @@ class LinksController < ApplicationController
       :source => Link.makeAbsolute(params[:link][:source]),
       :parsely_url => url
       }))
-
-      Linkqueue.links.push(@link)
 
     respond_to do |format|
       if @link.save
