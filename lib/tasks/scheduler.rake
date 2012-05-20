@@ -20,9 +20,7 @@ task :daily_links_email => :environment do
 
       end
 
-      puts sortedLinks.inspect
-
-      links.update_all(emailed: true)
+      links.update_all(emailed: false)
 
       puts "done."
 end
