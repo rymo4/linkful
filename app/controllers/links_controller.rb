@@ -174,6 +174,8 @@ class LinksController < ApplicationController
       :parsely_url => url
       }))
 
+      Linkqueue.links.push(@link)
+
     respond_to do |format|
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
