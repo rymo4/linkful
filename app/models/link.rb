@@ -13,7 +13,7 @@ class Link
   field :parsely_url, :type => String
   field :tags, :type => Array
   field :emailed, :type => Boolean, default: false
-  
+
   private
   def self.makeAbsolute(link)
     link = URI.unescape(link)
