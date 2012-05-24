@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = current_user.links
-    @title = 'Shared With You'
+    @title = 'Shared By You'
     
 =begin
     @links.each do |link|
