@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
 
   def show
     @user = User.find(params[:id])
-    @links = @user.links
+    @links = Link.where(:reciever_id => @user.id)
+    
     
     
     
@@ -49,9 +50,12 @@ class UsersController < ApplicationController
    
     
     
-    
-    
-    @title = @user.name + '\'s Links'
+    if (@user.name == 'Temp User')
+      name = @user.email
+    else
+      name = @user.name
+    end
+    @title = name + '\'s Links'
 
   	
   	@friends = Hash.new

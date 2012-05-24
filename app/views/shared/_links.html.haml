@@ -4,7 +4,7 @@
 %table.table.table-bordered.table-striped
 	%tr
 		%th Source
-		- if params[:controller]=='users'
+		- if params[:controller] != 'users'
 			%th Sent To
 		- else
 			%th Shared By
@@ -13,7 +13,9 @@
 		%tr
 			%td
 				= link_to link.title, link.source, :target => "_blank"
-				= link_to '(View)', link if current_user.id == link.sender_id
+				- if user_signed_in?
+					= link_to '(View)', link if current_user.id == link.sender_id
+					
 				- unless link.tags.nil?
 					%ul
 						- link.tags.take(10).each do |t|
@@ -21,7 +23,7 @@
 								%span.label.label-success 
 									= t
 				
-			- if params[:controller]=='users'
+			- if params[:controller]!='users'
 				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
 			- else
 				%td= link_to User.find(link.sender_id).name, User.find(link.sender_id)

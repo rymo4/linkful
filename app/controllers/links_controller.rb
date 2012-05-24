@@ -1,11 +1,11 @@
 class LinksController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :authenticate_user!, :except => [:show, :index, :create]
+  before_filter :authenticate_user!
 
   # GET /links
   # GET /links.json
   def index
-    @links = Link.where(:reciever_id => current_user.id)
+    @links = current_user.links
     @title = 'Shared With You'
     
 =begin
