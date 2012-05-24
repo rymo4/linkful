@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     
     
     
+=begin
     @links.each do |link|
       #if ((!link.tags.nil?) && (!link.tags.empty?))
         url = link.parsely_url
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
         end
       end
     end
+=end
     
     
    

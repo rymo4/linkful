@@ -5,7 +5,6 @@ Linkful::Application.routes.draw do
 
   match 'bookmarklet/:userid' => 'links#bookmarklet'
   match 'bookmark' => 'home#bookmark', :as => :bookmark
-  match 'test' => 'home#test'
 
   authenticated :user do
     root :to => 'home#index'

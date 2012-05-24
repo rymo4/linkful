@@ -72,7 +72,7 @@ Linkful::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.mailgun.org",
     port: 587,
-    domain: "linkfu.herokuapp.com",
+    domain: "app3466803.mailgun.org",
     authentication: :plain,
     enable_starttls_auto: true,
     user_name: ENV["MAILGUN_SMTP_LOGIN"],

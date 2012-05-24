@@ -4,19 +4,17 @@ class Link
   
   belongs_to :user
   
-  attr_accessible :source, :reciever_id, :title, :parsely_url, :tags
+  attr_accessible :source, :sender_id, :reciever_id, :title, :parsely_url, :tags
   
   field :source, :type => String
   field :sender_id
-  field :reciever_id
+  field :reciever_id #TODO: FIX MISSPELLING
   field :title, :type => String
   field :parsely_url, :type => String
   field :tags, :type => Array
+  field :emailed, :type => Boolean, default: false
 
-  after_save :addotoQueue
-  
   private
-  
   def self.makeAbsolute(link)
     link = URI.unescape(link)
     puts 'linkage ' + link
@@ -25,10 +23,6 @@ class Link
     else
       link
     end
-  end
-
-  protected
-  def addtoQueue()
   end
 
 end

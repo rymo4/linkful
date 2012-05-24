@@ -51,10 +51,12 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
   # Methods
   def sendDailyEmail
     puts self.links.where(:created_at.lte => Date.today.day).execute.to_a.inspect
   end
+
 
 end
 

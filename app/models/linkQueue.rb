@@ -1,4 +1,4 @@
-class Linkquene
+class Linkqueue
   include Mongoid::Document
   include Mongoid::Timestamps
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Your daily dose of fresh links delivered just for you!</h1>
+    <% @links.each do |link| %>
+      <p width="100%" border="1">
+      <b><%=link.title%> (<b/><%=link.source%><b>)</b><br />
+      </p>
+    <% end %>
+    <hr />
+    <p>These links were carefully packaged by http://linkful.com ! Come check us out :)</p>
+  </body>
+</html>
