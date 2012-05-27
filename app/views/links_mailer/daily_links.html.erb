@@ -8,6 +8,7 @@
     <% @links.each do |link| %>
       <p width="100%" border="1">
       <b><%=link.title%> (<b/><%=link.source%><b>)</b><br />
+			<%= raw '<img src=\'http://img.bitpixels.com/getthumbnail?code=27543&size=200&url=' + link.source + '\'/>' %>
       </p>
     <% end %>
     <hr />

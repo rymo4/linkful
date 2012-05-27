@@ -16,6 +16,7 @@
 				- if user_signed_in?
 					= link_to '(View)', link if current_user.id == link.sender_id
 					
+					
 				- unless link.tags.nil?
 					%ul
 						- link.tags.take(10).each do |t|
