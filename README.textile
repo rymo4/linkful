@@ -6,15 +6,15 @@ h2. Cool Features
 
 h3. Sexy Emails 
 
-Get one email with all the links you have been sent. They have thumbnails, titles, and look much better than a raw link. We think You'll like them.
+Get one email with all the links you have been sent. They have thumbnails, titles, and look much better than a raw link. We think you'll like them.
 
 h3. Bookmarklet 
 
-Never copy/paste a link again. Just click our bookmarklet and choose who you want to send the link to. 
+Never copy/paste a link into an email again. Just click our bookmarklet and choose who you want to send the link to. 
 
 h3. Automatic User Creation
 
-If you send somebody a link, we create an account for them automatically. Soon we will begin to use these so that they can log in and start sending links right away, no registration required. 
+If you send somebody a link, we create an account for them automatically. Soon we will begin to use these so that a user who received an email  can login and start sending links right away, no registration required. 
 
 
 
