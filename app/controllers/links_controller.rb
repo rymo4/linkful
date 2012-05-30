@@ -105,9 +105,10 @@ class LinksController < ApplicationController
       params[:link][:source] = params[:source]
     end
 
-    
-    link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
-    link.get(Link.makeAbsolute(params[:link][:source]))
+		
+ 		link = Mechanize.new { |agent| agent.user_agent_alias = 'Mac Safari'}
+		link.get "http://img.bitpixels.com/getthumbnail?code=27543&size=200&url=" + Link.makeAbsolute(params[:link][:source])
+		link.get(Link.makeAbsolute(params[:link][:source]))
     title = link.page.title 
 
 =begin

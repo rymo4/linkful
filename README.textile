@@ -2,12 +2,12 @@ h1. Linkful
 
 h2. TODO:
 
-* Make User groups
-* Make emails come from sender, not Alex (lol)
-* Make Bookmarklet autocomplete names of groups you created or emails of people you have sent links to 
-* Improve UI
-* When A link is submitted, submit GET request to the thumbnail url so it is queued for processing before user sees it
-* If not logged in, make bookmarlet redirect (in new tab) to login page
-* Make bookmarklet more secure with hash and salt (see: https://lastpass.com/support.php?cmd=showfaq&id=1166)
-* Add comments
-* Make app recieve emails and parse for email/group name and link, then send accordingly
+# Make User groups
+# Make emails come from sender, not Alex (lol)
+# Make Bookmarklet autocomplete names of groups you created or emails of people you have sent links to 
+# Improve UI
+# -When A link is submitted, submit GET request to the thumbnail url so it is queued for processing before user sees it-
+# If not logged in, make bookmarlet redirect (in new tab) to login page
+# Make bookmarklet more secure with hash and salt (see: https://lastpass.com/support.php?cmd=showfaq&id=1166)
+# Add comments
+# Make app recieve emails and parse for email/group name and link, then send accordingly
