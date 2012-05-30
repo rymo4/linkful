@@ -1,5 +1,24 @@
 h1. Linkful
 
+Linkful is designed to make sharing links easy. Instead of emailing your friends a ton of links, use the Linkful bookmarklet and let you friends recieve a pretty email at the end of the day with everything you've shared. It's better for everybody this way. 
+
+h2. Cool Features
+
+h3. Sexy Emails 
+
+Get one email with all the links you have been sent. They have thumbnails, titles, and look much better than a raw link. We think You'll like them.
+
+h3. Bookmarklet 
+
+Never copy/paste a link again. Just click our bookmarklet and choose who you want to send the link to. 
+
+h3. Automatic User Creation
+
+If you send somebody a link, we create an account for them automatically. Soon we will begin to use these so that they can log in and start sending links right away, no registration required. 
+
+
+
+
 h2. TODO:
 
 # Make User groups
