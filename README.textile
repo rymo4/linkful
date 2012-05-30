@@ -12,3 +12,6 @@ h2. TODO:
 # Add comments
 # Make app recieve emails and parse for email/group name and link, then send accordingly
 # Make one email per receiver regardless of many people sharing links with them. break down into groups of link by sender
+
+h2. License
+The MIT License : )
