@@ -10,3 +10,4 @@ h2. TODO:
 * If not logged in, make bookmarlet redirect (in new tab) to login page
 * Make bookmarklet more secure with hash and salt (see: https://lastpass.com/support.php?cmd=showfaq&id=1166)
 * Add comments
+* Make app recieve emails and parse for email/group name and link, then send accordingly
