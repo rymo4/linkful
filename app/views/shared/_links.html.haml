@@ -1,19 +1,16 @@
-%table.table.table-bordered.table-striped
-  %tr
-    %th Source
-    - if params[:controller] != 'users'
-      %th Sent To
-    - else
-      %th Shared By
-    %th Shared At
-
-  - @links.each do |link|
-    %tr
-      %td
-        = link_to link.title, link.source, :target => "_blank"    
-      - if params[:controller]!='users'
-        %td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
-      - else
-        %td= User.find(link.sender_id).name
-      %td= "#{time_ago_in_words link.created_at} ago"
 %br
+- @links.each_slice(4) do |batch|
+  .row
+    - batch.each do |link|
+      .work_post.span3
+        = link_to link.source do
+          = image_tag link.screenshot, :class => 'work_img', :alt => link.title
+        = link_to link.title, link.source, :class => 'work_link'
+        %p.share-info
+          Shared by 
+          - unless params[:controller] == 'users'
+            = link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
+          - else
+            = User.find(link.sender_id).name
+          %br
+          = "#{time_ago_in_words link.created_at} ago"
