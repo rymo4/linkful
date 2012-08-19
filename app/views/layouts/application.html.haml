@@ -10,7 +10,7 @@
       Basic Page Needs
       \==================================================
     %meta{:charset => "utf-8"}/
-    %title Super Skeleton | Responsive, Minimal, Beautiful... for WordPress
+    %title= @title
     %meta{:content => "", :name => "description"}
       %meta{:content => "", :name => "author"}
         /[if lt IE 9]
@@ -45,7 +45,7 @@
       / 960 Container
       .container
         .sixteen.columns
-          %span 
+          %span.subscribe 
             = render 'layouts/navigation'
           %span.tagline The best way to send & receive links.
     / Super Container for entire site
@@ -66,38 +66,6 @@
     / End SuperContainer
     / ==============================================
     / Super Container
-    #section-slider.super-container.full-width
-      / 960 Container
-      .container
-        /
-          Row Break
-          <div class="sixteen columns" id="page-header">
-          <br class="clear" />
-          <hr />
-          </div>
-          \/End Row Break
-        / Full Width Slider
-        .sixteen.columns
-          .slider--shadow
-            .flexslider-container
-              .flexslider
-                %ul.slides
-                  %li
-                    %a{"data-rel" => "prettyPhoto[SuperSkeleton]", :href => "http://mdnw.net/reactor/skeleton/demo-slide5.jpg"}
-                      %img{:alt => "SuperSkeleton", :src => "http://mdnw.net/reactor/skeleton/demo-images/slide3.jpg"}/
-                    / <p class="flex-caption">Captions and cupcakes. Winning combination.</p>
-                  %li
-                    %a{"data-rel" => "prettyPhoto[SuperSkeleton]", :href => "http://mdnw.net/reactor/skeleton/demo-slide2.jpg"}
-                      %img{:alt => "SuperSkeleton", :src => "hhttp://mdnw.net/reactor/skeleton/demo-images/slide3.jpg"}/
-                  %li
-                    %a{"data-rel" => "prettyPhoto[SuperSkeleton]", :href => "http://mdnw.net/reactor/skeleton/demo-slide3.jpg"}
-                      %img{:alt => "SuperSkeleton", :src => "http://mdnw.net/reactor/skeleton/demo-images/slide3.jpg"}/
-                  %li
-                    %a{"data-rel" => "prettyPhoto[SuperSkeleton]", :href => "http://mdnw.net/reactor/skeleton/demo-slide4.jpg"}
-                      %img{:alt => "SuperSkeleton", :src => "http://mdnw.net/reactor/skeleton/demo-images/slide3.jpg"}/
-                    / <p class="flex-caption">Captions and cupcakes. Winning combination.</p>
-        / /End Full Width Slider
-      / /End 960 Container
     / /End Super Container
     / ==============================================
     / Super Container

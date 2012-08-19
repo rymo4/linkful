@@ -1,41 +1,46 @@
-%hr.cool_divider
-.page-title
-	%h2 Come on in!
+- @title = 'Oops!'
+%br
+.oops
+  %p Linkful is currently closed for registration. While you can't send link, you can still receive your nightly email digest, and view your full link history. To view this page, look for the link in any Linkful digest.
+  %p When registration opens, all receivers will get a notification email and automatic access to the site.
+  %p Thanks!
+  %p Ryder & Alex
 .clearfix
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal", :id => "contact-form"} ) do |f|
-	= devise_error_messages!
-	%fieldset
-		.control-group.input.i_name
-			%label.control-label{:for => "name"} Name
-			.controls
-				.input-prepend
-					%span.add-on
-						%i.icon-user
-					= f.text_field :name
-		.control-group.input.i_name
-			%label.control-label{:for => "email"} Mail
-			.controls
-				.input-prepend
-					%span.add-on
-						%i.icon-envelope
-					= f.email_field :email
-		.control-group.input.i_password
-			%label.control-label{:for => "password"} Pass
-			.controls
-				.input-prepend
-					%span.add-on
-						%i.icon-lock
-					= f.password_field :password, :id => "password"
-		.control-group.input.i_password
-			%label.control-label{:for => "password_confirmation"} Again
-			.controls
-				.input-prepend
-					%span.add-on
-						%i.icon-ok
-					= f.password_field :password_confirmation, :id => "password_confirmation"
-	.form-actions
-		= f.submit "Signup!",  :class => "s_btn", :id=>"submit-form"
-= render "links"
+
+- form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal", :id => "contact-form"} ) do |f|
+  = devise_error_messages!
+  %fieldset
+    .control-group.input.i_name
+      %label.control-label{:for => "name"} Name
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-user
+          = f.text_field :name
+    .control-group.input.i_name
+      %label.control-label{:for => "email"} Mail
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-envelope
+          = f.email_field :email
+    .control-group.input.i_password
+      %label.control-label{:for => "password"} Pass
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-lock
+          = f.password_field :password, :id => "password"
+    .control-group.input.i_password
+      %label.control-label{:for => "password_confirmation"} Again
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-ok
+          = f.password_field :password_confirmation, :id => "password_confirmation"
+  .form-actions
+    = f.submit "Signup!",  :class => "s_btn", :id=>"submit-form"
+  = render "links"
 
 %br
 %br

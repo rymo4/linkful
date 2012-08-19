@@ -73,6 +73,4 @@ class User
     profile_hash
   end
 
-
 end
-

@@ -14,7 +14,6 @@ class Link
   field :tags, :type => Array
   field :emailed, :type => Boolean, default: false
 
-  private
   def self.makeAbsolute(link)
     link = URI.unescape(link)
     puts 'linkage ' + link
@@ -26,7 +25,7 @@ class Link
   end
 
   def screenshot 
-    "http://img.bitpixels.com/getthumbnail?code=27543&size=200&url=#{makeAbsolute(source)}"
+    "http://img.bitpixels.com/getthumbnail?code=27543&size=200&url=#{Link.makeAbsolute(source)}"
   end
 
 end
