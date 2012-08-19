@@ -1,6 +1,48 @@
+(function( window, document, req_version, callback, $, script, done, readystate ){
+  
+  // If jQuery isn't loaded, or is a lower version than specified, load the
+  // specified version and call the callback, otherwise just call the callback.
+  if ( !($ = window.jQuery) || req_version > $.fn.jquery || callback( $ ) ) {
+    
+    // Create a script element.
+    script = document.createElement( 'script' );
+    script.type = 'text/javascript';
+    
+    // Load the specified jQuery from the Google AJAX API server (minified).
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + req_version + '/jquery.min.js';
+    
+    // When the script is loaded, remove it, execute jQuery.noConflict( true )
+    // on the newly-loaded jQuery (thus reverting any previous version to its
+    // original state), and call the callback with the newly-loaded jQuery.
+    script.onload = script.onreadystatechange = function() {
+      if ( !done && ( !( readystate = this.readyState )
+        || readystate == 'loaded' || readystate == 'complete' ) ) {
+        
+        callback( ($ = window.jQuery).noConflict(1), done = 1 );
+        
+        $( script ).remove();
+      }
+    };
+    
+    // Add the script element to either the head or body, it doesn't matter.
+    document.documentElement.childNodes[0].appendChild( script );
+  }
+ 
+
+})( window, document,
+  
+  // Minimum jQuery version required. Change this as-needed.
+  '1.7',
+  
+  // Your jQuery code goes inside this callback. $ refers to the jQuery object,
+  // and L is a boolean that indicates whether or not an external jQuery file
+  // was just "L"oaded.
+  function( $, L ) {
+    '$:nomunge, L:nomunge'; // Used by YUI compressor.
+    
   function linkful_save()
   {
-  $.post('http://linkful.herokuapp.com/links/create', {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '<%=@current_userid%>'}, function(data) { });
+  $.post('http://localhost:3000/links/create', {'source': encodeURIComponent(document.location.href), 'email': $('#lightful_email').val(), 'user': '4f6f09601a4c1e3eef000011'}, function(data) { });
   }
 $(document).ready(function() {
 function loadScript(filename, filetype){
@@ -19,18 +61,9 @@ function loadScript(filename, filetype){
     document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
+$('body').append('<div style="position: fixed;top: 50%;width: 100%;background-color: white;text-align: center;border: 5px solid black;"><iframe src="http://localhost:3000/bookmarklet_iframe/4f6f09601a4c1e3eef000011"></iframe></div>');
 
-	$("#linkfulModal").fancybox({
-		maxWidth	: 800,
-		maxHeight	: 600,
-		fitToView	: false,
-		width		: '70%',
-		height		: '70%',
-		autoSize	: false,
-		closeClick	: false,
-		openEffect	: 'none',
-		closeEffect	: 'none'
-	});
-  $.fancybox( { title : 'Sent this link to somebody', type: 'html', content: '<form><input type="text" id="lightful_email" /><button onclick="linkful_save();">Send</button></form>'} );
-  loadScript('http://fancyapps.com/fancybox/source/jquery.fancybox.css', 'css');
 });
+    
+  }
+);
