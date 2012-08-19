@@ -1,59 +1,37 @@
 h1. Linkful
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Linkful is designed to make sharing links easy. Instead of emailing your friends a ton of links, use the Linkful bookmarklet and let you friends recieve a pretty email at the end of the day with everything you've shared. It's better for everybody this way. 
 
-h2. More Information
+h2. Cool Features
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+h3. Sexy Emails 
 
-h2. Required Gems
+Get one email with all the links you have been sent. They have thumbnails, titles, and look much better than a raw link. We think you'll like them.
 
-This application requires this gem:
+h3. Bookmarklet 
 
-* "rails":http://rubygems.org/gems/rails
+Never copy/paste a link into an email again. Just click our bookmarklet and choose who you want to send the link to. 
 
-h2. Dependencies
+h3. Automatic User Creation
 
-To use this application, you will need:
+If you send somebody a link, we create an account for them automatically. Soon we will begin to use these so that a user who received an email  can login and start sending links right away, no registration required. 
 
-* The Ruby language (version 1.8.7 or 1.9.2)
-* Rails (version 3.0.4 or newer)
 
-h2. Installing the Application
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-h2. Getting Started
+h2. TODO:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Documentation and Support
-
-This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Contributing
-
-If you make improvements to this application, please share with others.
-
-* Fork the project on GitHub.
-* Make your feature addition or bug fix.
-* Commit with Git.
-* Send the author a pull request.
-
-If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+# Make User groups
+# Make emails come from sender@linkful.com, not Alex (lol)
+# Make Bookmarklet have autocompleting drowpdown of names of groups you created or emails of people you have sent links to 
+# Improve UI
+# -When A link is submitted, submit GET request to the thumbnail url so it is queued for processing before user sees it-
+# If not logged in, make bookmarlet redirect (in new tab) to login page
+# Make bookmarklet more secure with hash and salt (see: https://lastpass.com/support.php?cmd=showfaq&id=1166)
+# Add comments
+# Make app recieve emails and parse for email/group name and link, then send accordingly
+# Make one email per receiver regardless of many people sharing links with them. break down into groups of link by sender
 
 h2. License
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+The MIT License : )
