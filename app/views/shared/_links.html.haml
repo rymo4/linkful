@@ -7,10 +7,11 @@
           = image_tag link.screenshot, :class => 'work_img', :alt => link.title
         = link_to link.title, link.source, :class => 'work_link'
         %p.share-info
-          Shared by 
           - unless params[:controller] == 'users'
+            Sent to
             = link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
           - else
+            Shared by 
             = User.find(link.sender_id).name
           %br
           = "#{time_ago_in_words link.created_at} ago"
