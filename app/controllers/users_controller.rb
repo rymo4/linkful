@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(:profile_hash => params[:profile_hash]).first
-    @links = Link.where(:reciever_id => @user.id)
+    @links = Link.where(:reciever_id => @user.id).desc :created_at
     
     if (@user.name == 'Temp User')
       name = @user.email

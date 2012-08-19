@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = current_user.links
+    @links = current_user.links.desc :created_at
     @title = 'Shared By You'
     
     respond_to do |format|
