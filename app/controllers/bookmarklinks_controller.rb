@@ -1,5 +1,7 @@
 class BookmarklinksController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  before_filter :authenticate_user!, :except => [:new, :create, :bookmarklet]
+
   def new
     @source = params[:source]
     render :layout => false
@@ -10,9 +12,15 @@ class BookmarklinksController < ApplicationController
     if params[:user].nil?
       user = current_user
     else
-      user = User.find(params[:user])
+      user = User.where({profile_hash: params[:user]})
     end
-      
+
+    @user = user
+
+    unless user
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     email = params[:email].to_s
 
     unless params[:source].nil? || params[:source].empty?
@@ -51,5 +59,12 @@ class BookmarklinksController < ApplicationController
       :parsely_url => url
       }))
       @link.save
+    render :layout => false
+  end
+
+  def bookmarklet
+    @current_userid = params[:userid]
+    headers["Content-Type"] = "text/javascript"
+    render :layout => false
   end
 end

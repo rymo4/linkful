@@ -25,7 +25,7 @@
     };
     
     // Add the script element to either the head or body, it doesn't matter.
-    document.documentElement.childNodes[0].appendChild( script );
+    document.body.appendChild( script );
   }
  
 
@@ -61,7 +61,7 @@ function loadScript(filename, filetype){
     document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
-$('body').append('<div style="position: fixed;top: 50%;width: 100%;background-color: white;text-align: center;border: 5px solid black;"><iframe src="http://localhost:3000/bookmarklinks?user=4f6f09601a4c1e3eef000011"></iframe></div>');
+$('body').append('<div style="position: fixed;top: 50%;width: 100%;background-color: white;text-align: center;border: 5px solid black;"><iframe id="linkful_bookmark_iframe" src="http://localhost:3000/bookmarklinks/new?user=f2e37eb19d4333df41d58c286d6b2a21&source=' + encodeURIComponent(document.location.href) + '"></iframe></div>');
 
 });
     
