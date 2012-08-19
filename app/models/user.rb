@@ -1,6 +1,11 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  require "digest"
+
+  after_create :make_hash!
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -41,10 +46,12 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
   has_many :links, :foreign_key => :sender_id
+
   # Custom fields
   field :name
   field :isTemp, :type => Boolean, :default => false
   field :lastSent, :type => DateTime, :default => Date.today
+  field :profile_hash
   
   attr_accessible :name, :isTemp
   # Validations
@@ -52,11 +59,18 @@ class User
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
+  def make_hash!
+    encrypted = Digest::MD5.hexdigest("#{id.to_s}-#{Time.now}")
+    update_attribute :profile_hash, encrypted
+  end
+
   # Methods
   def sendDailyEmail
     puts self.links.where(:created_at.lte => Date.today.day).execute.to_a.inspect
   end
 
+  def to_param
+    profile_hash
+  end
 
 end
-

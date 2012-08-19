@@ -1,25 +1,96 @@
 !!!
-%html
+/[if lt IE 7 ] <html class="ie ie6" lang="en">
+/[if IE 7 ] <html class="ie ie7" lang="en">
+/[if IE 8 ] <html class="ie ie8" lang="en">
+/ [if (gte IE 9)|!(IE)]><!
+%html{:lang => "en"}
+  / <![endif]
   %head
-    %meta{:charset => "utf-8"}
-    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
-    %title= content_for?(:title) ? yield(:title) : "Linkful"
+    /
+      Basic Page Needs
+      \==================================================
+    %meta{:charset => "utf-8"}/
+    %title= @title
     %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-    = yield(:head)
+      %meta{:content => "", :name => "author"}
+        /[if lt IE 9]
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        /
+          Mobile Specific Metas
+          \==================================================
+        %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+        /
+          CSS
+          \==================================================
+        %meta{:charset => "utf-8"}
+        %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+        %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+        %title= content_for?(:title) ? yield(:title) : "Linkful"
+        %meta{:content => "", :name => "description"}
+        %meta{:content => "", :name => "author"}
+        = stylesheet_link_tag  "application", :media => "all"
+        = javascript_include_tag "application"
+        = csrf_meta_tags
+        = yield(:head)
+        /
+          Favicons
+          \==================================================
+        %link{:href => "assets/favicon.ico", :rel => "shortcut icon"}/
+        %link{:href => "assets/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+        %link{:href => "assets/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+        %link{:href => "assets/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
-    #main{:role => "main"}
+    / Super Container for entire site
+    #section-tophat.super-container.full-width
+      / 960 Container
       .container
-        .content
-          .row
-            .span12
-              = yield
-          %footer
+        .sixteen.columns
+          %span.subscribe 
+            = render 'layouts/navigation'
+          %span.tagline The best way to send, save & share links.
+    / Super Container for entire site
+    #section-header.super-container.full-width
+      / 960 Container
+      .container
+        / Header
+        %header
+          .sixteen.columns
+            / Branding
+            .six
+              %h1#logo{:style => "margin-top: 40px; margin-bottom: 30px;"}
+                = "#{@title || 'Linkful'}"
+            / /End Branding
+            %hr.remove-bottom/
+        / /End Header
+      / End 960 Container
+    / End SuperContainer
+    / ==============================================
+    / Super Container
+    / /End Super Container
+    / ==============================================
+    / Super Container
+    / /End Super Container
+    .super-container.full-width
+      .container
+        = yield
+    / ==============================================
+    / Super Container
+    / /End Super Container
+    /
+      JS
+      \==================================================
+    / <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> Remove for live site
+    %script{:src => "assets/javascripts/jquery-1.6.2.min.js"}
+    %script{:src => "assets/javascripts/tabs.js"}
+    %script{:src => "assets/javascripts/jquery.tipsy.js"}
+    %script{:src => "assets/javascripts/jquery.prettyPhoto.js"}
+    %script{:src => "assets/javascripts/jquery.hoverIntent.js"}
+    %script{:src => "assets/javascripts/superfish.js"}
+    %script{:src => "assets/javascripts/supersubs.js"}
+    %script{:src => "assets/javascripts/chosen/chosen.jquery.js"}
+    %script{:src => "assets/javascripts/jquery.flexslider-min.js"}
+    %script{:src => "assets/javascripts/filterable.pack.js"}
+    %script{:src => "assets/javascripts/skeleton-key.js"}
+    /
+      End Document
+      \==================================================

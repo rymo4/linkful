@@ -16,7 +16,6 @@ gem "email_spec", ">= 1.2.1", :group => :test
 gem "bson_ext", ">= 1.6.1"
 gem "mongoid", ">= 2.4.6"
 gem "devise", ">= 2.1.0.rc"
-gem "bootstrap-sass", ">= 2.0.1"
 gem 'mechanize'
 gem 'hpricot'
 gem 'typhoeus'
