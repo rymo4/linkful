@@ -1,9 +1,10 @@
 Linkful::Application.routes.draw do
   resources :links
+  resources :bookmarklinks
 
   match '/links/create' => 'links#create'
 
-  match 'bookmarklet/:userid' => 'links#bookmarklet'
+  match 'bookmarklet/:userid' => 'bookmarklinks#bookmarklet'
   match 'bookmark' => 'home#bookmark', :as => :bookmark
 
   authenticated :user do
