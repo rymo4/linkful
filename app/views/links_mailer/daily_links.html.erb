@@ -19,10 +19,7 @@
                                 </td>
                                     <td align="right" style="padding:0">
                                         <div class="preheader" style="line-height:1px;color:#24262A;font-size:1px;height:1px;display:none!important"></div>
-                                        <div class="small" style="line-height:18px;color:#787878;font-size:10px;font-family:sans-serif"><div style="line-height:18px;color:#787878">If this newsletter is not legible,
-                                                <a href="#" target="_blank" style="color:#4C6B6D;text-decoration:none">view it online</a>
-                                                or
-                                                <a href="#" target="_blank" style="color:#4C6B6D;text-decoration:none">unsubscribe</a></div>
+                                        <div class="small" style="line-height:18px;color:#787878;font-size:10px;font-family:sans-serif"><div style="line-height:18px;color:#787878"></div>
                                         </div>
                                     </td>
                                     <td style="padding:0">&nbsp;</td><td rowspan="4" width="10" style="padding:0">&nbsp;</td></tr>
@@ -40,7 +37,7 @@
                                                 <td height="140" colspan="2" style="padding:0">&nbsp;</td>
                                                 <td valign="middle" align="right" class="h1" style="font-family:Georgia, Times, serif;color:#24262A;font-size:40px;line-height:36px;letter-spacing:-0.04em;text-shadow:#787878 0px 1px 1px;-moz-text-shadow:#787878 0px 1px 1px;-webkit-text-shadow:#787878 0px 1px 1px;text-align:right;padding:0">
                                                     <!-- CONTENT start -->
-                                                    <div class="h1" style="line-height:36px;color:#24262A;font-family:Georgia, Times, serif;font-size:40px;letter-spacing:-0.04em;text-shadow:#787878 0px 1px 1px;-moz-text-shadow:#787878 0px 1px 1px;-webkit-text-shadow:#787878 0px 1px 1px;text-align:right"><div style="line-height:36px;color:#24262A;font-family:Georgia, Times, serif;font-size:40px;letter-spacing:-0.04em;text-shadow:#787878 0px 1px 1px;-moz-text-shadow:#787878 0px 1px 1px;-webkit-text-shadow:#787878 0px 1px 1px;text-align:right">Linkful Digest</div></div>
+                                                    <div class="h1" style="line-height:36px;color:#24262A;font-family:Georgia, Times, serif;font-size:40px;letter-spacing:-0.04em;text-shadow:#787878 0px 1px 1px;-moz-text-shadow:#787878 0px 1px 1px;-webkit-text-shadow:#787878 0px 1px 1px;text-align:right"><div style="line-height:36px;color:#24262A;font-family:Georgia, Times, serif;font-size:40px;letter-spacing:-0.04em;text-shadow:#787878 0px 1px 1px;-moz-text-shadow:#787878 0px 1px 1px;-webkit-text-shadow:#787878 0px 1px 1px;text-align:right">Your Linkful Digest</div></div>
                                                     <!-- CONTENT end -->
                                                 </td>
                                                 <td width="30" style="padding:0">&nbsp;</td></tr>
@@ -48,6 +45,7 @@
                                         <table width="580" cellspacing="0" cellpadding="0" style="font-size:12px;color:#787878">
                                             <tr style="padding:0">
                                                 <td height="18" bgcolor="#E2DAC3" style="padding:0">
+                                                  <center><%= link_to 'Complete Linkful History', "http://linkful.herokuapp.com/users/#{@user.profile_hash}" %></center>
                                                     <img src="http://alexpoon.me/perfectTheme/version4/img/shadow_top.gif" width="580" height="18" alt="" border="0" style="display:block"></td>
                                                 </tr>
                                             </table>
@@ -74,6 +72,13 @@
                                                                         <img src="<%= link.screenshot %>" alt="" title="" width="169" height="108" border="0" style="max-width:169px;display:block">
                                                                       </a>
                                                                       </div>
+                                                                    </td>
+                                                                  <% end %>
+                                                                  <% (3-batch.length).times do %>
+                                                                    <td width="18" style="padding:0">&nbsp;</td>
+                                                                    <td width="169" valign="top" align="left" style="padding:0">
+                                                                    <div class="img" style="line-height:18px;color:#787878">
+                                                                    </div>
                                                                     </td>
                                                                   <% end %>
                                                                                                                                                <!-- CONTENT end -->
@@ -107,6 +112,19 @@
                                                                                         <img src="http://alexpoon.me/perfectTheme/version4/img/more.gif" width="64" height="36" alt="read more" title="read more" border="0" style="display:block"></a>
                                                                                     </div>
                                                                                 </td>
+                                                                              <% end %>
+                                                                              <% (3-batch.length).times do %>
+ <td width="18" style="padding:0">&nbsp;</td>
+                                                                            <!-- CONTENT start -->
+                                                                            <td width="169" valign="top" align="left" style="padding:0">
+                                                                                <div class="font" style="line-height:18px;color:#787878;font-family:Georgia, Times, serif">
+                                                                                    <div style="line-height:18px;color:#787878">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="btn" style="line-height:18px;color:#787878">
+                                                                                    </div>
+                                                                                </td>
+
                                                                               <% end %>
 
                                                                                         <!-- CONTENT end -->
