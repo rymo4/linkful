@@ -1,29 +1,19 @@
-%h1 
-	=@title
-%br
 %table.table.table-bordered.table-striped
-	%tr
-		%th Source
-		- if params[:controller] != 'users'
-			%th Sent To
-		- else
-			%th Shared By
+  %tr
+    %th Source
+    - if params[:controller] != 'users'
+      %th Sent To
+    - else
+      %th Shared By
+    %th Shared At
 
-	- @links.each do |link|
-		%tr
-			%td
-				= link_to link.title, link.source, :target => "_blank"		
-				- unless link.tags.nil?
-					%ul
-						- link.tags.take(10).each do |t|
-							%li.horizontal
-								%span.label.label-success 
-									= t
-				
-			- if params[:controller]!='users'
-				%td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
-			- else
-				%td= link_to User.find(link.sender_id).name, User.find(link.sender_id)
-
+  - @links.each do |link|
+    %tr
+      %td
+        = link_to link.title, link.source, :target => "_blank"    
+      - if params[:controller]!='users'
+        %td= link_to User.find(link.reciever_id).name, User.find(link.reciever_id)
+      - else
+        %td= User.find(link.sender_id).name
+      %td= "#{time_ago_in_words link.created_at} ago"
 %br
-

@@ -1,20 +1,18 @@
-= link_to "Linkful", root_path, :class => 'brand'
 %ul.nav
-	- if user_signed_in?
-		%li
-			= link_to('Logout', destroy_user_session_path, :method=>'delete')
-		%li
-			= link_to('Bookmark', bookmark_path)
-	- else
-		%li
-			= link_to('Login', new_user_session_path)
-	- if user_signed_in?
-		%li
-			= link_to('Edit account', edit_user_registration_path)
-		%li
-			= link_to('Shared By You', links_path)
-		%li
-			= link_to('My Links', current_user)
-	- else
-		%li
-			= link_to('Sign up', new_user_registration_path)	
+  %li= link_to 'Home', root_url
+  - if user_signed_in?
+    %li
+      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+    %li
+      = link_to('Bookmark', bookmark_path)
+    %li
+      = link_to('Edit account', edit_user_registration_path)
+    %li
+      = link_to('Shared By You', links_path)
+    %li
+      = link_to('My Links', current_user)
+  - else
+    %li
+      = link_to('Login', new_user_session_path)
+    %li
+      = link_to('Sign up', new_user_registration_path)  

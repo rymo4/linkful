@@ -25,4 +25,8 @@ class Link
     end
   end
 
+  def screenshot 
+    "http://img.bitpixels.com/getthumbnail?code=27543&size=200&url=#{makeAbsolute(source)}"
+  end
+
 end

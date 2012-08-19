@@ -8,44 +8,6 @@ class LinksController < ApplicationController
     @links = current_user.links
     @title = 'Shared By You'
     
-=begin
-    @links.each do |link|
-      #if ((!link.tags.nil?) && (!link.tags.empty?))
-        url = link.parsely_url
-        unless url.nil? || !link.tags.nil?
-          request = Typhoeus::Request.new("http://hack.parsely.com#{url}",
-                                          :method => :get,
-                                          :timeout => 250,
-                                          :cache_timeout => 60
-                                          )
-          hydra = Typhoeus::Hydra.new
-          hydra.queue(request)
-          hydra.run
-          response = request.response
-
-          unless response.timed_out?
-            parsed_json = ActiveSupport::JSON.decode(response.body)
-     
-          if parsed_json['status']=='DONE'
-            topics = Array.new
-            marked_text = parsed_json['data'] 
-            topics = marked_text.scan(/<TOPIC>([^<>]*)<\/TOPIC>/imu).flatten # HACKY CODE FTW!!!
-
-            topics = topics.inject({}) do |hash,item|
-               hash[item]||=item
-               hash 
-            end.values # HACKY CODE FTW!!!
-            
-            
-            link.tags = topics
-            link.save!
-          end
-       # end
-        end
-      end
-    end
-=end
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @links }
@@ -58,11 +20,6 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @topics = @link.tags
     
- 
-    
-    
-                       
-                                  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @link }
@@ -111,40 +68,6 @@ class LinksController < ApplicationController
 		link.get(Link.makeAbsolute(params[:link][:source]))
     title = link.page.title 
 
-=begin
-    html = link.page.content
-    doc = Hpricot.parse(html)
-    
-    #body = body.gsub(/<.*>/, '')
-    (doc/"script").each {|js| js.inner_html=''}
-    text = (doc/"//*/text()")
-    body = text.join(" ")
-    body = body.gsub(/\n/, ' ')
-    body += title
-    #body = body.gsub(/<.*>/, '')
-    puts body + " END"
-    
-    request = Typhoeus::Request.new("http://hack.parsely.com/parse",
-                                    :method => :post,
-                                        :timeout => 600,
-                                        :cache_timeout => 600,
-                                    :params => {
-                                      :text => body,
-                                      :wiki_filter => false
-                                      }
-                                    )
-    hydra = Typhoeus::Hydra.new
-    hydra.queue(request)
-    hydra.run
-    response = request.response
-
-    unless request.response.timed_out?
-      parsed_json = ActiveSupport::JSON.decode(response.body)
-      url = parsed_json['url']
-    end
-=end
-
-    url = nil
 
     if !User.where(:email => /#{email}/).first.nil?
       reciever_id = User.where(:email => /#{email}/i).first.id
@@ -159,12 +82,10 @@ class LinksController < ApplicationController
       reciever_id = User.where(:email => /#{email}/i).first.id
     end
       
-    
     @link = user.links.new(params[:link].merge({
       :reciever_id => reciever_id, 
       :title => title, 
       :source => Link.makeAbsolute(params[:link][:source]),
-      :parsely_url => url
       }))
 
     respond_to do |format|

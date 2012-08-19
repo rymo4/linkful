@@ -10,6 +10,6 @@ Linkful::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
-  devise_for :users
-  resources :users, :only => :show
+  devise_for :users, :except => :show
+  match 'users/:profile_hash' => "users#show", :as => 'user'
 end
