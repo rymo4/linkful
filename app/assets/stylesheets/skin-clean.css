@@ -45,3 +45,4 @@ ul.tabs li a.active:after{
 #section-sub-footer:after {
 	content: "";
 	background: black;
+}

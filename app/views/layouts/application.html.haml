@@ -35,10 +35,10 @@
         /
           Favicons
           \==================================================
-        %link{:href => "assets/favicon.ico", :rel => "shortcut icon"}/
-        %link{:href => "assets/apple-touch-icon.png", :rel => "apple-touch-icon"}/
-        %link{:href => "assets/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
-        %link{:href => "assets/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+        =#%link{:href => "assets/favicon.ico", :rel => "shortcut icon"}/
+        =#%link{:href => "assets/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+        =#%link{:href => "assets/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+        =#%link{:href => "assets/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
   %body
     / Super Container for entire site
     #section-tophat.super-container.full-width
@@ -73,24 +73,3 @@
     .super-container.full-width
       .container
         = yield
-    / ==============================================
-    / Super Container
-    / /End Super Container
-    /
-      JS
-      \==================================================
-    / <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> Remove for live site
-    %script{:src => "assets/javascripts/jquery-1.6.2.min.js"}
-    %script{:src => "assets/javascripts/tabs.js"}
-    %script{:src => "assets/javascripts/jquery.tipsy.js"}
-    %script{:src => "assets/javascripts/jquery.prettyPhoto.js"}
-    %script{:src => "assets/javascripts/jquery.hoverIntent.js"}
-    %script{:src => "assets/javascripts/superfish.js"}
-    %script{:src => "assets/javascripts/supersubs.js"}
-    %script{:src => "assets/javascripts/chosen/chosen.jquery.js"}
-    %script{:src => "assets/javascripts/jquery.flexslider-min.js"}
-    %script{:src => "assets/javascripts/filterable.pack.js"}
-    %script{:src => "assets/javascripts/skeleton-key.js"}
-    /
-      End Document
-      \==================================================

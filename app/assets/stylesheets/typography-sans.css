@@ -3,29 +3,29 @@
 /* ======================================================= */
 
 body{ 
-	font: 13px/19px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
-	color: #555;
-	}
+  font: 13px/19px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  color: #555;
+  }
 
 a, a:hover{color: #ee7727; text-decoration: none;}
 a:hover{opacity: 0.8;}
 .module a:hover{opacity: 1;}
 
-			
-/* Headline Text */	 
+      
+/* Headline Text */   
 h1, h2, h3, h4, h5, h6 {  
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
-	font-weight: bold; 
-	color: #222; 
-	font-weight: bold; 
-	}	
-	 
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-weight: bold; 
+  color: #222; 
+  font-weight: bold; 
+  }  
+   
 h5 { 
-	font-size: 15px; 
-	line-height: 28px;
-	margin-top: 10px;
+  font-size: 15px; 
+  line-height: 28px;
+  margin-top: 10px;
 } 
-	
+  
 h2.title{ 
     background: url("../images/theme/backgrounds/pattern_diagonal_medium.png") repeat scroll 0 0 transparent;
     font-size: 28px;
@@ -37,8 +37,8 @@ h2.title{
 h2.title span{  padding: 17px 22px 17px 0;  }
 
 .sidebar h3, .aside h3{
-	font-size: 11px;
-	text-transform: uppercase;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 
@@ -54,12 +54,12 @@ h2.title span{  padding: 17px 22px 17px 0;  }
  
  
 /* Small Text Classes */
-.tags a, #section-tophat, #section-footer span, #section-sub-footer, .date{
-	font-size: 11px
+.tags a, #section-tophat, #section-footer span, #section-sub-footer, .date {
+  font-size: 11px
 }
 
 #section-footer {
-	font-size: 12px
+  font-size: 12px
 }
 
 .portfolio-filters span, .portfolio-view span{
@@ -80,7 +80,7 @@ label, legend {
 
 .tabs li a{color: #111;}
 .aside{
-	background: url("../images/theme/backgrounds/pattern_diagonal_white.png") repeat scroll 0px 2px transparent;
+  background: url("../images/theme/backgrounds/pattern_diagonal_white.png") repeat scroll 0px 2px transparent;
     border-right: 4px solid rgba(155, 155, 155, 0.2);
     font-size: 11px;
     padding: 10px 15px 10px 10px;
@@ -88,56 +88,54 @@ label, legend {
 }
 
 .superquote{
-	clear: both; 
-	margin: 40px 0; 
-	font-size: 26px; 
-	font-style: italic; 
-	font-family: Georgia; 
-	line-height: 34px; 
-	padding-left: 20px; 
+  clear: both; 
+  margin: 40px 0; 
+  font-size: 26px; 
+  font-style: italic; 
+  font-family: Georgia; 
+  line-height: 34px; 
+  padding-left: 20px; 
 }
 
 .supertagline{
-	clear: both; 
-	margin: 20px 0; 
-	font-size: 26px; 
-	font-style: italic; 
-	font-family: Georgia; 
-	line-height: 34px; 
-	display: block;
-	text-align: center;
+  clear: both; 
+  margin: 20px 0; 
+  font-size: 26px; 
+  font-style: italic; 
+  font-family: Georgia; 
+  line-height: 34px; 
+  display: block;
+  text-align: center;
 }
 
 
-/* Featured Space (for downloads and stuff) */
 .feature {
-	background: url("../images/theme/backgrounds/pattern_diagonal_medium.png") repeat scroll 0 0 transparent;
-	display: block;
-	padding: 30px 20px; 
-	font-size: 24px;
-	font-style: italic;
-	font-family: Georgia; 
-	line-height: 34px;
-}	
+  background: url("theme/backgrounds/pattern_diagonal_medium.png") repeat scroll 0 0 transparent;
+  display: block;
+  padding: 30px 20px; 
+  font-size: 24px;
+  font-style: italic;
+  font-family: Georgia; 
+  line-height: 34px;
+}  
 
 .feature span{
-	background: white;
-	padding: 10px;
-	}
+  background: white;
+  padding: 10px;
+  }
 
 .feature .button{
-	float: right;
+  float: right;
 }
 
-/* Tags Text */
 .tags a{ 
-	background: none repeat scroll 0 0 #333333;
-	color: #EFEFEF; 
-	}
-.tags a:hover{	
-	background: #444444;  
-	oolor: #ffffff;
-	}
+  background: none repeat scroll 0 0 #333333;
+  color: #EFEFEF; 
+  }
+.tags a:hover{  
+  background: #444444;  
+  color: #ffffff;
+  }
 
 
 
@@ -146,78 +144,72 @@ label, legend {
 
 .sf-menu li:hover ul,
 .sf-menu li.sfHover ul {
-	top:			3.8em; /* 3.8 with sans stack, match top ul list item height */
+  top:      3.8em;
 }
 
 
-.sf-menu > li > a strong{ /* Top Level Link */
-	font-size: 13px;
-	font-weight: bold;	
-	color: #333;
-	}
-	
-.sf-menu > li a span{ /* Top Level Sub-text */
-	font-size: 9.5px; 
-	font-weight: normal; 
-	line-height: 9px; 
-	color: #777; 
-	display: block; /* To ensure that the subtext drops a line */
-	}
+.sf-menu > li > a strong{ 
+  font-size: 13px;
+  font-weight: bold;  
+  color: #333;
+}
+  
+.sf-menu > li a span{
+  font-size: 9.5px;
+  font-weight: normal;
+  line-height: 9px;
+  color: #777;
+  display: block;
+}
 
 .sf-menu > li:hover a strong { color: #222; }
 .sf-menu > li:hover a span{ color: #444; }
 
-/* Dropdown Links */
 .sf-menu ul { 
-	font-size: 12px;
-	color: #CCC;
-	}
+  font-size: 12px;
+  color: #CCC;
+  }
 
 .sf-menu ul li:hover a{ color: white; }
 
-/* Light version of dropdown */
 .sf-menu.light ul li a { color: #555; }
 .sf-menu.light ul li:hover a{ color: #000 ; }
 .sf-menu.light ul { color: #333; }
 
-	
+  
 
-/* Tophat and Footer Text */
 #section-tophat, #section-tophat a,
 #section-footer, #section-footer a, 
-#section-sub-footer{ 
-	color: #aaa; 
-	}
+#section-sub-footer { 
+  color: #aaa; 
+  }
 
 #section-footer h5{ 
-	color: #eee; 
-	}
+  color: #eee; 
+  }
 
 #section-footer a{
-	text-decoration: none;
-	}
-	
+  text-decoration: none;
+  }
+  
    
    
-/* Light Text Shadow */
 h1, h2, h3, h4, h5, h6,
 .sf-menu.light ul li a,
 .portfolio-filters span, .portfolio-view span {  
-	 -webkit-text-shadow: 1px 0 1px #fff;
-		-moz-text-shadow: 1px 0 1px #fff;
-		  -o-text-shadow: 1px 0 1px #fff;
-			 text-shadow: 1px 0 1px #fff;
-			}
+   -webkit-text-shadow: 1px 0 1px #fff;
+    -moz-text-shadow: 1px 0 1px #fff;
+      -o-text-shadow: 1px 0 1px #fff;
+       text-shadow: 1px 0 1px #fff;
+      }
 
-/* Dark Text Shadow */
 .sf-menu li ul, 
 #section-tophat, 
 #section-footer, #section-footer h5,
 .sf-menu.light li u {  
-	 -webkit-text-shadow: 1px 0 1px #000;
-		-moz-text-shadow: 1px 0 1px #000;
-		  -o-text-shadow: 1px 0 1px #000;
-			 text-shadow: 1px 0 1px #000;
-			}
+   -webkit-text-shadow: 1px 0 1px #000;
+    -moz-text-shadow: 1px 0 1px #000;
+      -o-text-shadow: 1px 0 1px #000;
+       text-shadow: 1px 0 1px #000;
+      }
 
-/* ul.square li{ line-height: 14px; } */

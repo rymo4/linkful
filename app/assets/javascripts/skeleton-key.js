@@ -5,7 +5,6 @@ $(window).load(function () {
 /*	Filterable - http://www.gethifi.com/blog/a-jquery-plugin-to-create-an-interactive-filterable-portfolio-like-ours
 /*-----------------------------------------------------------------------------------*/
 
-		 $('#portfolio-list').filterable(); // ACTIVATE FILTER SCRIPT
 		
 		 // Default Override Section
 		 
@@ -147,78 +146,6 @@ $(window).load(function () {
 		 		
 
 
-
-
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	FlexSlider - http://flex.madebymufffin.com/
-/*-----------------------------------------------------------------------------------*/
-
-		$('.flexslider').flexslider({
-			animation: "slide",              //Select your animation type (fade/slide)
-			slideshow: true,                //Should the slider animate automatically by default? (true/false)
-			slideshowSpeed: 7000,           //Set the speed of the slideshow cycling, in milliseconds
-			animationDuration: 500,         //Set the speed of animations, in milliseconds
-			directionNav: true,             //Create navigation for previous/next navigation? (true/false)
-			controlNav: true,               //Create navigation for paging control of each clide? (true/false)
-			keyboardNav: true,              //Allow for keyboard navigation using left/right keys (true/false)
-			touchSwipe: true,               //Touch swipe gestures for left/right slide navigation (true/false)
-			prevText: "Previous",           //Set the text for the "previous" directionNav item
-			nextText: "Next",               //Set the text for the "next" directionNav item
-			randomize: false,                //Randomize slide order on page load? (true/false)
-			slideToStart: 0,                //The slide that the slider should start on. Array notation (0 = first slide)
-			pauseOnAction: true,            //Pause the slideshow when interacting with control elements, highly recommended. (true/false)
-			pauseOnHover: false,            //Pause the slideshow when hovering over slider, then resume when no longer hovering (true/false)
-			controlsContainer: ".flexslider-container"           //Advanced property: Can declare which container the navigation elements should be appended too. Default container is the flexSlider element. Example use would be ".flexslider-container", "#container", etc. If the given element is not found, the default action will be taken.
-		});
-
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	PrettyPhoto - http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/
-/*-----------------------------------------------------------------------------------*/
-		$("a[data-rel^='prettyPhoto']").prettyPhoto();
-		$(".XYZ a").prettyPhoto();
-		$("a.boxLink").prettyPhoto();
-
- 
-/*-----------------------------------------------------------------------------------*/
-/*	Tipsy & Normal Tooltips - http://onehackoranother.com/projects/jquery/tipsy/
-/*-----------------------------------------------------------------------------------*/
-		$("#sub-sidebar .social a").tipsy({gravity: 's', fade: true});
-		$(".tipsy").tipsy({gravity: 's', fade: true});
-		$("ul.social img").tipsy({gravity: 's', fade: true, delayIn: 2000, delayOut: 200});
-		$("a.popLink").tipsy({gravity: 's', fade: true, delayIn: 2000, delayOut: 200});
-		$(".gallery-item img").tipsy({gravity: 's', fade: true, delayIn: 3000, delayOut: 200});
-		
-  		 
-/*-----------------------------------------------------------------------------------*/
-/*	DropDown Menu - http://users.tpg.com.au/j_birch/plugins/superfish/
-/*-----------------------------------------------------------------------------------*/
-		/*  $(".menu ul li").horizontalMenu({
-			timeHide: 900
-		});	 */
-	
-  		
-		 $("ul.sf-menu").supersubs({
-		 	minWidth:    13,   // minimum width of sub-menus in em units 
-            maxWidth:    27,   // maximum width of sub-menus in em units 
-            extraWidth:  0    // extra width can ensure lines don't sometimes turn over 
-                               // due to slight rounding differences and font-family 
-		 }).superfish({
-		 	delay: 600,
-		 	Speed: 100,
-		 	animation:   {opacity:'show',height:'show'},
-		 	autoArrows: true,
-		 }); 
-		 
-		 $("#responsive-nav select").change(function() {
-  			window.location = $(this).find("option:selected").val();
-		 });
-		 
-		
-		
 /*-----------------------------------------------------------------------------------*/
 /*	Widget Overlay Area - custom, no URL
 /*-----------------------------------------------------------------------------------*/	
@@ -310,18 +237,6 @@ $(window).load(function () {
 	    .trigger("scroll");
 	
 	});
-
-
-
-
-
-/*-----------------------------------------------------------------------------------*/
-/*	Chosen Select Menu - http://harvesthq.github.com/chosen/
-/*-----------------------------------------------------------------------------------*/
-
-	$(".chzn-select").chosen();
- 
-	
 
 
 /*-----------------------------------------------------------------------------------*/

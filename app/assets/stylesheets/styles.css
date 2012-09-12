@@ -32,8 +32,6 @@
 @import url("buttons.css"); 	/* Button Colors - long, gnarly style code */ 
 @import url("superfish.css");  	
 @import url("flexslider.css");  								/* Superfish Defaults for the Theme (skins are in this doc, below) */ 
-@import url("chosen/chosen.css");   				/* Chosen dropdown menu Styles */ 
-@import url("prettyPhoto/css/prettyPhoto.css");  /* prettyPhoto Styles */ 
 
 @import url("typography-sans.css"); 	/* Typography Font Stack */ 
 
@@ -59,7 +57,7 @@ body:after,
 /* h2.title span:after, */
 ul.tabs li a.active:after{  
 	content: "";
-	background: transparent url("theme/backgrounds/pattern_diagonal_white.png") repeat;
+	background: transparent url("/assets/theme/backgrounds/pattern_diagonal_white.png") repeat;
 	position:absolute; 
 	z-index:99; 
 	left:0; 
@@ -510,7 +508,7 @@ and (max-width: 960) {
   .navigation ul.sf-menu { display: none;} 
   
   #section-tophat span.subscribe, #section-tophat span.tagline,
-  ##section-sub-footer span.copyright, #section-sub-footer span.colophon,
+  #section-sub-footer span.copyright, #section-sub-footer span.colophon,
   {float: none; text-align: center;}
   
   header .navigation{margin-top: 10px;}
